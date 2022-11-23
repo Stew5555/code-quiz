@@ -6,7 +6,7 @@
 
 ## how to view website and the code
 - For the code go to (https://github.com/Stew5555/code-quiz)
-- For the deployed website go to (https://github.com/Stew5555/code-quiz)
+
 
 ## Installing
 - You can just clone the code!

@@ -70,3 +70,28 @@ const questions = [
         correctAnswer: "b"
     }
 ];
+
+// TIMER FUNCTION STARTS PROCESS 
+function setTime() {
+    let timerInterval = setInterval(function () {
+        secondsLeft--;
+        time.textContent = `Time:${secondsLeft}s`;
+
+        if (secondsLeft === 0 || questionCount === questions.length) {
+            clearInterval(timerInterval);
+            questionsEl.style.display = "none";
+            finalEl.style.display = "block";
+            score.textContent = secondsLeft;
+        }
+    }, 1000);
+}
+
+// QUIZ BEGIN FUNCTION
+function startQuiz() {
+    codersIntro.style.display = "none";
+    questionsEl.style.display = "block";
+    questionCount = 0;
+
+    setTime();
+    setQuestion(questionCount);
+}

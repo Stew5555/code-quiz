@@ -38,10 +38,10 @@ let goBackBtn = document.querySelector("#goBack");
 
 
 // VAR ANSER CALL
-const ans1Btn = document.querySelector("#answer-1");
-const ans2Btn = document.querySelector("#answer-2");
-const ans3Btn = document.querySelector("#answer-3");
-const ans4Btn = document.querySelector("#answer-4");
+const ans1Btn = document.querySelector("#answer-a");
+const ans2Btn = document.querySelector("#answer-b");
+const ans3Btn = document.querySelector("#answer-c");
+const ans4Btn = document.querySelector("#answer-d");
 
 const questions = [ 
     {
@@ -99,10 +99,10 @@ function startQuiz() {
 function setQuestion(id) {
     if (id < questions.length) {
         questionEl.textContent = questions[id].question;
-        ans1Btn.textContent = questions[id].answers[0];
-        ans2Btn.textContent = questions[id].answers[1];
-        ans3Btn.textContent = questions[id].answers[2];
-        ans4Btn.textContent = questions[id].answers[3];
+        ans1Btn.textContent = questions[id].answers[a];
+        ans2Btn.textContent = questions[id].answers[b];
+        ans3Btn.textContent = questions[id].answers[c];
+        ans4Btn.textContent = questions[id].answers[d];
     }
 }
 
@@ -131,4 +131,35 @@ function checkAnswer(event) {
         questionCount++;
     }
     setQuestion(questionCount);
+}
+
+//STORES SCORES
+function addScore(event) {
+    event.preventDefault();
+
+    finalEl.style.display = "none";
+    highscoresEl.style.display = "block";
+
+    let init = initialsInput.value.toUpperCase();
+    scoreList.push({ initials: init, score: secondsLeft });
+
+    // HIGH SCORE SORTING LIST
+    scoreList = scoreList.sort((a, b) => {
+        if (a.score < b.score) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    
+    scoreListEl.innerHTML="";
+    for (let i = 0; i < scoreList.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        scoreListEl.append(li);
+    }
+
+    // STORAGE OF SCORE 
+    storeScores();
+    displayScores();
 }

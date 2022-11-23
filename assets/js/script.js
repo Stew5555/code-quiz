@@ -42,3 +42,31 @@ const ans1Btn = document.querySelector("#answer-1");
 const ans2Btn = document.querySelector("#answer-2");
 const ans3Btn = document.querySelector("#answer-3");
 const ans4Btn = document.querySelector("#answer-4");
+
+const questions = [ 
+    {
+        question: "tring values must be enclosed within _____ when being assigned to variables.",
+        answers: ["a. commas", "b. curly brackets", "c. quotes", "d. parenthesis"],
+        correctAnswer: "c"
+    },
+    {
+        question: "The condition in an if / else statement is enclosed within _______.",
+        answers: ["a. quotes", "b. curly brackets", "c. parentheses", "d. square brackets"],
+        correctAnswer: "a"
+    },
+    {
+        question: "How to write an IF statement in JavaScript?",
+        answers: ["a. if i == 5 then", "b. if i = 5 then", "c. if(i == 5)", "d. if i = 5"],
+        correctAnswer: "c"
+    },
+    {
+        question: "How do you call a function named myFunction?",
+        answers: ["a. call myFunction()", "b. call function myFunction()", "c. myFunction()", "d. call myFunction"],
+        correctAnswer: "c"
+    },
+    {
+        question: "To see if two variables are equal in an if / else statement you would use ____.",
+        answers: ["a. =", "b. ==", "c. 'equals'", "d. !="],
+        correctAnswer: "b"
+    }
+];

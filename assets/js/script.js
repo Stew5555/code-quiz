@@ -163,3 +163,57 @@ function addScore(event) {
     storeScores();
     displayScores();
 }
+
+function storeScores() {
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
+}
+
+function displayScores() {
+    // Parsing the JSON string to an object
+    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+
+    // WHEN RETREIVED FROM LOCAL, ARRAY
+    if (storedScoreList !== null) {
+        scoreList = storedScoreList;
+    }
+}
+
+// CLEAR THE STORE
+function clearScores() {
+    localStorage.clear();
+    scoreListEl.innerHTML="";
+}
+
+// Start timer and display first question when click start quiz
+start.addEventListener("click", startQuiz);
+
+// CHECK ANSER LISTENER EVENT
+ansBtn.forEach(item => {
+    item.addEventListener('click', checkAnswer);
+});
+
+submitScrBtn.addEventListener("click", addScore);
+
+goBackBtn.addEventListener("click", function () {
+    highscoresEl.style.display = "none";
+    codersIntro.style.display = "block";
+    secondsLeft = 75;
+    time.textContent = `Time:${secondsLeft}s`;
+});
+
+// CLEAR SCORE
+clearScrBtn.addEventListener("click", clearScores);
+
+// HIGH SCORE BUTTON ALERT AND DISPLAY LISTENER EVENT
+viewScrBtn.addEventListener("click", function () {
+    if (highscoresEl.style.display === "none") {
+        highscoresEl.style.display = "block";
+    } 
+    else if (highscoresEl.style.display === "block") {
+        highscoresEl.style.display = "none";
+    } 
+    
+    else {
+        return alert("Hey. Take Quiz. There is No High Score.");
+    }
+});
